@@ -22,11 +22,30 @@ jQuery(document).ready(function ($) {
 				    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> + ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
 				  	i++; // Increment i
 					}
-				} else {
-					alert('Algebra with subtraction is not ready yet');
 				}
 
-			} else {
+				if (theOperator == '-') {
+					var i = 0;
+					while ( i < howMany ) {
+						var number1 = 1 + Math.floor(Math.random() * maxNumber);
+						var number2 = 1 + Math.floor(Math.random() * maxNumber);
+						if (number1 >= number2) {
+							var answer = number1-number2;
+							var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
+
+					    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> - ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
+				  	} else {
+							var answer = number2-number1;
+							var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
+
+					    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number2 + '</span> - ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number1 +'" href="#">Check Answer</a><span class="checker"></span></li>');
+
+				  	}
+				  	i++; // Increment i
+					}
+				}
+
+			} else { // It's not basic Algebra, so do this
 
 				$('#content').append('<h3>' + howMany + ' Questions with a High Number of ' +maxNumber+'</h3><ul class="max_' + maxNumber + '"></ul>');
 				if (theOperator == '+') {

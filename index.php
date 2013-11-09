@@ -16,7 +16,7 @@
 			<label>How many questions do you want?</label>
 			<input class="howMany" type="text"  pattern="\d*" placeholder="How Many Questions"/>
 			<label>Addition or Subtraction?</label>
-			<input type="radio" name="operator" value="-"/> -
+			<input type="radio" name="operator" value="-"/> <span class="space-right">-</span>
 			<input type="radio" name="operator" value="+"/> +
 			<div class="basic-algebra-q">
 				<label>Basic Algebra?</label>
