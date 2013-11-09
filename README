@@ -1,0 +1,15 @@
+This is a javascript powered, basic math application I made for my kiddos to easily practice their basics on without wasting a bunch of paper.
+
+How it works
+===========
+The user can enter the number of equations they want, the operator (+ or -) and the highest possible number for the equation.  After submitting the form, it creates the equations with an input and answer submit button for each equation.
+
+Features
+==============
+
+- Enter the highest # you want in your equations
+- Enter the number of equations you want
+- Choose between + and - for the operator
+- For +, choose to do basic algebra (ie - 5 + _ = 10)
+- Green check when the question is right
+- Red X with the submitted answer above it when the question is wrong (this way, you can check how many times someone tried the question and what answer they submitted each time)
