@@ -23,8 +23,12 @@ body {
 	font-size: 80%;
 }
 
-.space-right {
-	margin-right: 10px;
+input[type="radio"] {
+	margin-left: 10px;
+}
+
+label+input[type="radio"] {
+	margin-left: 0;
 }
 
 h3 {
@@ -69,12 +73,12 @@ input.hopeful-answer {
 	font-size: 20px;
 }
 
-ul.basic-algebra input.hopeful-answer {
+input.algebra-hopeful-answer {
 	margin: 0;
 }
 
-ul.basic-algebra .algebra-answer {
-	margin-right: 10px;
+.algebra-answer {
+	margin-right: 20px;
 }
 
 a.btn {
