@@ -20,7 +20,7 @@
 			<input type="radio" name="operator" value="+"/> +
 			<input type="radio" name="operator" value="*"/> x
 			<input type="radio" name="operator" value="/"/> /
-			<label><input type="checkbox" name="algebra" value="yes"/> Basic Algebra</label>
+			<label><input type="checkbox" name="algebra" value="yes"/> Basic Algebra format</label>
 
 			<p><a class="btn maxNumber-submit">Create Equations</a></p>
 		</div>
