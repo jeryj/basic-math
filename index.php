@@ -19,10 +19,9 @@
 			<input type="radio" name="operator" value="-"/> -
 			<input type="radio" name="operator" value="+"/> +
 			<input type="radio" name="operator" value="*"/> x
-			<div class="basic-algebra-q">
-				<label>Basic Algebra?</label>
-				<input type="checkbox" name="algebra" value="yes"/> Bring it on
-			</div>
+			<input type="radio" name="operator" value="/"/> /
+			<label><input type="checkbox" name="algebra" value="yes"/> Basic Algebra</label>
+
 			<p><a class="btn maxNumber-submit">Create Equations</a></p>
 		</div>
 

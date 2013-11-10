@@ -12,6 +12,7 @@ jQuery(document).ready(function ($) {
 	    '+': function(a, b) { return a + b },
 	    '-': function(a, b) { return a - b },
 	    '*': function(a, b) { return a * b },
+	    '/': function(a, b) { return a / b },
 		};
 
 		// Create the UL list to append the questions to
@@ -94,6 +95,51 @@ jQuery(document).ready(function ($) {
 					}
 				} // End if operator -
 
+				if (theOperator == '/') {
+					var i = 0;
+					while ( i < howMany ) {
+						var number1 = 1 + Math.floor(Math.random() * maxNumber);
+
+						// Get all numbers that can be divided by number1 without a remainder
+						var iNumber=1;
+						// Create the array to store the whole numbers that divide evenly
+						var divisibles = [];
+						// Set a counter for the array
+						var iDivisible = 1;
+						// divide all the possible numbers
+						while (iNumber <= number1) {
+							var findDivisibles = number1/iNumber;
+
+							if ( findDivisibles % 1 != 0 ) {
+								// If it doesn't equal zero, then there's a remainder, so don't do anything
+							} else {
+								// There's no remainder!  Let's store that number in the divisibles array
+								divisibles[iDivisible]=iNumber;
+								// Increase the counter so we don't overwrite our last entry
+								iDivisible++;
+							}
+							iNumber++;
+						}
+						// Let's randomly select one of the values from the array
+						// iDivisible - 1 should be all the possibles keys of the divisibles array
+						var divisibleSelector = 1 + Math.floor(Math.random() * (iDivisible - 1));
+						// Set number2 as one of the entries from te divisbles array
+						var number2 = divisibles[divisibleSelector];
+						// This block of code logs all the entries in the divisibles array
+						// Object.keys(divisibles).forEach(function(key){
+						//	console.log(key, divisibles[key]);
+						//	console.log(number1/divisibles[key]);
+						// });
+
+						var answer = operators[theOperator](number1, number2);
+						var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
+
+				    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator +' <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
+
+				  	i++; // Increment i
+					}
+				} // End if operator /
+
 			} // End create function
 
 		$('ul.max_' + randomClassNum + ' a.btn').click( function (e) {
@@ -118,7 +164,6 @@ jQuery(document).ready(function ($) {
 			}
 		});
 
-
 		//Clear form inputs so you can't resubmit twice on accident
 		$('input.maxNumber, input.howMany').val('');
 
@@ -128,3 +173,4 @@ jQuery(document).ready(function ($) {
 	$('a.btn.maxNumber-submit').click(createEquations);
 
 });
+
