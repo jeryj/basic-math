@@ -2,6 +2,9 @@ body {
 	background: #fff;
 	font-size: 20px;
 	font-family: helvetica;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
 }
 
 #main {
@@ -88,6 +91,18 @@ a.btn {
 	background: #f90;
 	color: #fff;
 	text-decoration: none;
+	cursor: pointer;
+		-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+}
+
+a.btn:hover {
+	background: #ff8500;
+}
+
+a.btn:active {
+	background: #fc0;
 }
 
 i {

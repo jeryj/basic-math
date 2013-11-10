@@ -15,7 +15,7 @@
 			<input class="maxNumber" type="text" pattern="\d*" placeholder="Highest Number"/>
 			<label>How many questions do you want?</label>
 			<input class="howMany" type="text"  pattern="\d*" placeholder="How Many Questions"/>
-			<label>Addition or Subtraction?</label>
+			<label>What kind of equations do you want?</label>
 			<input type="radio" name="operator" value="-"/> -
 			<input type="radio" name="operator" value="+"/> +
 			<input type="radio" name="operator" value="*"/> x
