@@ -6,6 +6,8 @@ jQuery(document).ready(function ($) {
 		var theOperator = $('input[name="operator"]:checked').val();
 		var basicAlgebra = $('input[name="algebra"]:checked').val();
 
+		var randomClassNum = 1+ Math.floor(Math.random() * 10000);
+
 		var operators = {
 	    '+': function(a, b) { return a + b },
 	    '-': function(a, b) { return a - b },
@@ -13,7 +15,8 @@ jQuery(document).ready(function ($) {
 		};
 
 		// Create the UL list to append the questions to
-		$('#content').append('<h3>' + howMany + ' Questions with a High Number of ' +maxNumber+'</h3><ul class="max_' + maxNumber + '"></ul>');
+		$('#content').append('<h3>' + howMany + ' Questions with a High Number of ' + maxNumber + '</h3><ul class="max_' + randomClassNum + '"></ul>');
+
 		// Basic Algebra
 		if (basicAlgebra == 'yes') {
 
@@ -25,7 +28,7 @@ jQuery(document).ready(function ($) {
 						var answer = operators[theOperator](number1, number2);
 						var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer algebra-hopeful-answer" />'
 
-				    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
+				    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
 				  	i++; // Increment i
 					}
 				}
@@ -41,13 +44,13 @@ jQuery(document).ready(function ($) {
 							var answer = operators[theOperator](number1, number2);
 							var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer algebra-hopeful-answer" />'
 
-					    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> - ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
+					    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> - ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
 				  	} else {
 				  		// Looks like number2 was bigger, so put it first
 							var answer = operators[theOperator](number2, number1);
 							var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer algebra-hopeful-answer" />'
 
-					    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number2 + '</span> - ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number1 +'" href="#">Check Answer</a><span class="checker"></span></li>');
+					    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number2 + '</span> - ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number1 +'" href="#">Check Answer</a><span class="checker"></span></li>');
 
 				  	}
 				  	i++; // Increment i
@@ -66,7 +69,7 @@ jQuery(document).ready(function ($) {
 						var answer = operators[theOperator](number1, number2);
 						var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
 
-				    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
+				    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
 				  	i++; // Increment i
 					}
 				}
@@ -79,12 +82,12 @@ jQuery(document).ready(function ($) {
 							var answer = operators[theOperator](number1, number2);
 							var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
 
-					    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> - <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
+					    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> - <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
 				  	} else {
 							var answer = operators[theOperator](number2, number1);
 							var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
 
-					    $('ul.max_' + maxNumber).append('<li id="question_' + i + '"><span class="first-number">' + number2 + '</span> - <span class="second-number">' + number1 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
+					    $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number2 + '</span> - <span class="second-number">' + number1 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
 
 				  	}
 				  	i++; // Increment i
@@ -93,7 +96,7 @@ jQuery(document).ready(function ($) {
 
 			} // End create function
 
-		$('ul.max_' + maxNumber + ' a.btn').click( function (e) {
+		$('ul.max_' + randomClassNum + ' a.btn').click( function (e) {
 			e.preventDefault();
 			var suffix = $(this).attr('id').split('_').pop();
 			var answer = $(this).attr('class').split('_').pop();
