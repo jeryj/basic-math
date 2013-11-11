@@ -251,6 +251,7 @@ body {
 	background: #FDFDF4;
 	padding: 10px 0 0px;
 	position: fixed;
+	top: 0;
 	z-index: 99;
 	box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
@@ -302,6 +303,10 @@ p.nice-job i.icon-ok {
 	-webkit-transition: all .8s;
 	-moz-transition: all .8s;
 	transition: all .8s;
+}
+
+.slide-action {
+	color: #ff8500;
 }
 
 .rotate-half {
@@ -450,7 +455,7 @@ i.icon-ok {
 }
 
 @-webkit-keyframes pulsate {
-    0% {-webkit-transform: scale(1, 1)}
-    50% {-webkit-transform: scale(1.1, 1.1)}
-    100% {-webkit-transform: scale(1, 1)}
+    0% {-webkit-transform: scale(1, 1); }
+    50% {-webkit-transform: scale(1.25, 1.25);}
+    100% {-webkit-transform: scale(1, 1); }
 }

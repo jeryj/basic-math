@@ -7,6 +7,7 @@ jQuery(document).ready(function ($) {
 
   function equationsSlide () {
       $('#create-equations-slide').removeClass('pulsate');
+      $('p.nice-job').hide();
       $('#create-equations .row').slideToggle();
       $('#create-equations-slide i').toggleClass('rotate-half');
   }
@@ -135,9 +136,7 @@ jQuery(document).ready(function ($) {
           $(this).siblings('.checker').prepend('<i class="icon-ok"><i>')
           $(this).siblings(".checker").children('.icon-ok').hide().fadeIn().delay('2000').addClass("rotate-whole");
           // See if there are any more questions right
-          if ( $('#content .btn').is(":visible")) {
-            console.log('Some are visible');
-          } else {
+          if ( $('#content .btn').is(":hidden")) {
             $('p.nice-job').slideToggle();
             $('#create-equations-slide').addClass('pulsate');
           }
@@ -153,6 +152,8 @@ jQuery(document).ready(function ($) {
 
     //Clear form inputs so you can't resubmit twice on accident
     $('input.maxNumber, input.howMany').val('');
+    $('input[name="operator"]').prop('checked', false);
+    $('input[name="algebra"]').prop('checked', false);
 
   }
 
