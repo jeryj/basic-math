@@ -450,6 +450,10 @@ i.icon-ok {
 	display: block;
 }
 
+#create-equations.relative {
+	position: relative;
+}
+
 #create-equations-slide.slide-action.pulsate {
     -webkit-animation: pulsate 1s ease-out;
     -webkit-animation-iteration-count: infinite;

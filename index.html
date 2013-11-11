@@ -10,31 +10,31 @@
 
 <body>
 
-		<div id="create-equations" class="full-width">
-			<div class="row">
-				<label>What should be the highest number in the equations?</label>
-				<input class="maxNumber" type="text" pattern="\d*" placeholder="Highest Number"/>
-				<label>How many questions do you want?</label>
-				<input class="howMany" type="text"  pattern="\d*" placeholder="How Many Questions"/>
-				<label>What kind of equations do you want?</label>
-				<input type="radio" name="operator" value="-"/> -
-				<input type="radio" name="operator" value="+"/> +
-				<input type="radio" name="operator" value="*"/> x
-				<input type="radio" name="operator" value="/"/> /
-				<label>Do you want to do basic algebra?</label>
-				<input type="checkbox" name="algebra" value="yes"/> Basic algebra format
-				<p class="create-eq"><a class="btn maxNumber-submit">Create Equations</a></p>
-			</div>
-
-			<p class="nice-job"><i class="icon-ok"></i>Nice work!  Now create some more equations!</p>
-
-			<div id="create-equations-slide" class="slide-action"><i class="icon-chevron-up"></i></div>
+	<div id="create-equations" class="full-width">
+		<div class="row">
+			<label>What should be the highest number in the equations?</label>
+			<input class="maxNumber" type="text" pattern="\d*" placeholder="Highest Number"/>
+			<label>How many questions do you want?</label>
+			<input class="howMany" type="text"  pattern="\d*" placeholder="How Many Questions"/>
+			<label>What kind of equations do you want?</label>
+			<input type="radio" name="operator" value="-"/> -
+			<input type="radio" name="operator" value="+"/> +
+			<input type="radio" name="operator" value="*"/> x
+			<input type="radio" name="operator" value="/"/> /
+			<label>Do you want to do basic algebra?</label>
+			<input type="checkbox" name="algebra" value="yes"/> Basic algebra format
+			<p class="create-eq"><a class="btn maxNumber-submit">Create Equations</a></p>
 		</div>
 
-		<div id="equations" class="full-width">
-			<div id="content" class="row">
-			</div>
+		<p class="nice-job"><i class="icon-ok"></i>Nice work!  Now create some more equations!</p>
+
+		<div id="create-equations-slide" class="slide-action"><i class="icon-chevron-up"></i></div>
+	</div>
+
+	<div id="equations" class="full-width">
+		<div id="content" class="row">
 		</div>
+	</div>
 
 <script type='text/javascript' src='scripts/scripts.js'></script>
 </body>

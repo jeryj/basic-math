@@ -8,6 +8,7 @@ jQuery(document).ready(function ($) {
   function equationsSlide () {
       $('#create-equations-slide').removeClass('pulsate');
       $('p.nice-job').hide();
+      $('#create-equations').removeClass('relative');
       $('#create-equations .row').slideToggle();
       $('#create-equations-slide i').toggleClass('rotate-half');
   }
@@ -140,6 +141,7 @@ jQuery(document).ready(function ($) {
           if ( $('#content .btn').is(":visible")) {
 
           } else {
+            $('#create-equations').removeClass('relative');
             $('p.nice-job').slideToggle();
             $('#create-equations-slide').addClass('pulsate');
           }
@@ -153,11 +155,6 @@ jQuery(document).ready(function ($) {
       }
     });
 
-    //Clear form inputs so you can't resubmit twice on accident
-    $('input.maxNumber, input.howMany').val('');
-    $('input[name="operator"]').prop('checked', false);
-    $('input[name="algebra"]').prop('checked', false);
-
   }
 
   //Create the forms!
@@ -170,7 +167,26 @@ jQuery(document).ready(function ($) {
     } else {
       createEquations();
       equationsSlide();
+
+      //Change create equations form to relative, because we don't really need to watch it scroll down the page.
+      // Also, there's a bug on iOS that makes it jump around the page
+      $('#create-equations').addClass('relative');
+
+      //Clear form inputs so you can't resubmit twice on accident
+      $('input.maxNumber, input.howMany').val('');
+      $('input[name="operator"]').prop('checked', false);
+      $('input[name="algebra"]').prop('checked', false);
+
+
     }
+  });
+
+  // Fix iOS fixed position with keyboard jumps around page
+  // Do a programmatic scroll to reset it to the right spot
+  $(document).on('blur', 'input, textarea', function() {
+    setTimeout(function() {
+        window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
+    }, 0);
   });
 
 });
