@@ -136,7 +136,9 @@ jQuery(document).ready(function ($) {
           $(this).siblings('.checker').prepend('<i class="icon-ok"><i>')
           $(this).siblings(".checker").children('.icon-ok').hide().fadeIn().delay('2000').addClass("rotate-whole");
           // See if there are any more questions right
-          if ( $('#content .btn').is(":hidden")) {
+          if ( $('#content .btn').is(":visible")) {
+
+          } else {
             $('p.nice-job').slideToggle();
             $('#create-equations-slide').addClass('pulsate');
           }
