@@ -276,6 +276,7 @@ p.nice-job {
 	padding: 8px;
 	text-align: center;
 	margin: 14px 0;
+	cursor: pointer;
 }
 
 p.nice-job i.icon-ok {

@@ -13,6 +13,7 @@ jQuery(document).ready(function ($) {
   }
 
   $('#create-equations-slide').click(equationsSlide);
+  $('p.nice-job').click(equationsSlide);
 
   function createEquations (maxNumber, howMany) {
 
