@@ -255,14 +255,32 @@ body {
 	box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
-#create-equations p:last-child {
-	margin-top: 40px;
-	margin-bottom: 40px;
+#create-equations .row {
+	position: relative;
+}
+
+#create-equations p.create-eq {
+	padding: 40px 0;
+
 }
 
 #create-equations a.btn {
 	font-size: 110%;
 	padding: 8px 16px;
+}
+
+p.nice-job {
+	background: #5BCF34;
+	color: #fff;
+	padding: 8px;
+	text-align: center;
+	margin: 14px 0;
+}
+
+p.nice-job i.icon-ok {
+	background: #fff;
+	color: #5BCF34;
+	margin-right: 10px;
 }
 
 .slide-action {
@@ -416,4 +434,23 @@ i.icon-ok {
 	right: 0;
 	margin: auto;
 	width: 0px;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+#create-equations-slide.slide-action.pulsate {
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(1, 1)}
+    50% {-webkit-transform: scale(1.1, 1.1)}
+    100% {-webkit-transform: scale(1, 1)}
 }

@@ -1,8 +1,12 @@
 jQuery(document).ready(function ($) {
 
+  // Hide stuff
+  $('p.nice-job').hide();
+
   //Slide Form
 
   function equationsSlide () {
+      $('#create-equations-slide').removeClass('pulsate');
       $('#create-equations .row').slideToggle();
       $('#create-equations-slide i').toggleClass('rotate-half');
   }
@@ -134,7 +138,8 @@ jQuery(document).ready(function ($) {
           if ( $('#content .btn').is(":visible")) {
             console.log('Some are visible');
           } else {
-            equationsSlide();
+            $('p.nice-job').slideToggle();
+            $('#create-equations-slide').addClass('pulsate');
           }
         } else {
           //Show a Red X with the submitted answer above it so we know what they entered
