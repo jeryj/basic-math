@@ -20,6 +20,3 @@ Roadmap
 - Fixed number equations (10 + random #; 10 + random #; 10 + random #; ....)
 - Change radio button +, -, *, and / to checkboxes so you can randomly allow a mix of any checked
 - Store answers in array instead of outputting it as a class
-- Error states on incomplete form
-- Change from fontawesome to icomoon with only the needed icons
-- Spin checkmark icon when right answer

@@ -162,7 +162,8 @@ jQuery(document).ready(function ($) {
     e.preventDefault();
     var maxNumber = $('input.maxNumber').val();
     var howMany = $('input.howMany').val();
-    if ((maxNumber == '') || (howMany== '')) {
+    var operatorCheck = $('input[name="operator"]:checked').length == 0;
+    if ((maxNumber == '') || (howMany== '') || (operatorCheck)) {
       alert("You didn't fill out the whole form");
     } else {
       createEquations();
