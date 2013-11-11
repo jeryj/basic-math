@@ -1,29 +1,305 @@
+@charset "UTF-8";
+
+/**
+ * http://meyerweb.com/eric/tools/css/reset/
+ * v2.0 | 20110126
+ * License: none (public domain)
+ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark, audio, video
+{
+    border:         0;
+    font-size:      100%;
+    font:           inherit;
+    margin:         0;
+    padding:        0;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+
+body
+{
+    line-height: 1.3;
+}
+
+ol, ul, ol li, ul li
+{
+    list-style-type: none;
+    margin:          0px;
+    padding:         0px;
+}
+
+blockquote, q
+{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after
+{
+    content: '';
+    content: none;
+}
+
+table
+{
+    /**
+     * Instead of "collapse" I'm using "separate" as that allows me to give table cells
+     * a border without having to go through a lot of trouble
+     */
+    border-collapse: separate;
+    border-spacing:  0;
+    width:           100%;
+}
+
+    table th
+    {
+        font-weight: bold;
+        text-align: left;
+    }
+
+pre, code
+{
+    font-size:   13px;
+    font-family: monospace;
+    word-wrap: break-word;
+}
+
+/**
+ * These form elements usually don't trigger any special cursor and thus can confuse
+ * users when these elements have custom styles (e.g. a background image).
+ */
+input[type="submit"], input[type="button"], input[type="checkbox"], input[type="radio"],
+button, select
+{
+    cursor: pointer;
+}
+
+*[disabled], *[disabled="disabled"]
+{
+    cursor: not-allowed;
+}
+
+textarea
+{
+    overflow: auto;
+}
+
+acronym, abbr
+{
+    cursor: help;
+}
+
+/* Some typography related styles */
+
+
+a:hover, a:active
+{
+    outline: none;
+}
+
+strong
+{
+    font-weight: bold;
+}
+
+small
+{
+    font-size: 90%;
+}
+
+sup {
+    position: relative;
+    top: -5px;
+    font-size: 90%;
+}
+
+
+/*---------- Grid Layout -------------*/
+@charset "UTF-8";
+
+/**
+ * Modified version of the CSS grid (aka 1140 CSS) that can be found at http://cssgrid.net
+ */
+
+.full-width {
+    width: 100%;
+    clear: both;
+    padding: 40px 0;
+}
+
+.row {
+    margin:    0 auto;
+    max-width: 800px;
+    width:     96%;
+    padding: 0 2%;
+    clear: both;
+    position: relative;
+}
+
+.row:after,
+.full-width:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.grid_1, .grid_2, .grid_3, .grid_4,
+.grid_5, .grid_6, .grid_7, .grid_8,
+.grid_9, .grid_10, .grid_11 {
+    float:        left;
+    margin-right: 3.8%;
+    min-height:   1px;
+}
+
+.row .grid_1 {
+    width: 4.85%;
+}
+
+.row .grid_2 {
+    width: 13.45%;
+}
+
+.row .grid_3 {
+    width: 22.05%;
+}
+
+.row .grid_4 {
+    width: 30.75%;
+}
+
+.row .grid_5 {
+    width: 39.45%;
+}
+
+.row .grid_6 {
+    width: 48%;
+}
+
+.row .grid_7 {
+    width: 56.75%;
+}
+
+.row .grid_8 {
+    width: 65.4%;
+}
+
+.row .grid_9 {
+    width: 74.05%;
+}
+
+.row .grid_10 {
+    width: 82.7%;
+}
+
+.row .grid_11 {
+    width: 91.35%;
+}
+
+.row .grid_12 {
+    float: left;
+    width: 100%;
+}
+
+.last {
+    margin-right: 0px;
+}
+
+img, object, embed {
+    max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+@media (max-width: 700px) {
+
+    .row .grid_1, .row .grid_2, .row .grid_3, .row .grid_4,
+    .row .grid_5, .row .grid_6, .row .grid_7, .row .grid_8,
+    .row .grid_9, .row .grid_10, .row .grid_11, .row .grid_12 {
+        width: 94%;
+        padding: 0 3%;
+        margin-right: 0;
+    }
+
+}
+
+
+/*------------ App Styles -----------------*/
+
 body {
 	background: #fff;
-	font-size: 20px;
-	font-family: helvetica;
+	font-size: 16px;
+	font-family: 'helvetica neue', helvetica, arial, sans-serif;
 	-webkit-transition: all .3s;
 	-moz-transition: all .3s;
 	transition: all .3s;
 }
 
-#main {
-	max-width: 800px;
-	margin: 40px auto;
+#create-equations {
+	background: #FDFDF4;
+	padding: 10px 0 0px;
+	position: fixed;
+	z-index: 99;
+	box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
-#content {
-	float: left;
-	width: 60%;
-	margin-right: 3%;
-	min-height: 40px;
+#create-equations p:last-child {
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
-#sidebar {
-	float: left;
-	width: 26%;
-	padding: 2%;
-	font-size: 80%;
+#create-equations a.btn {
+	font-size: 110%;
+	padding: 8px 16px;
+}
+
+.slide-action {
+	position: absolute;
+	padding: 5px 18px 4px;
+	margin: auto;
+	width: 15px;
+	background: #FDFDF4;
+	border-radius: 3px;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: all .8s;
+	-moz-transition: all .8s;
+	transition: all .8s;
+	left: 0;
+	right: 0;
+	bottom: -26px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.1);
+	-webkit-transition: all .8s;
+	-moz-transition: all .8s;
+	transition: all .8s;
+}
+
+.rotate-half {
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=6);	/* Internet Explorer */
+}
+
+.rotate-whole {
+	-webkit-transform: rotate(-360deg);
+	-moz-transform: rotate(-360deg);
+	-ms-transform: rotate(-360deg);
+	-o-transform: rotate(-360deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=9);	/* Internet Explorer */
 }
 
 input[type="radio"] {
@@ -44,10 +320,10 @@ ul {
 	list-style: none;
 	margin: 0 0 40px;
 	padding: 20px 20px 10px 20px;
-	background: #eee;
+	background: #F0F8F8;
 }
 
-li {
+ul li {
 	margin-bottom: 30px;
 }
 
@@ -56,14 +332,14 @@ li {
 }
 
 label {
-	font-size: 14px;
 	display: block;
-	margin: 20px 0 4px;
+	margin: 30px 0 4px;
+
 }
 
 input {
-	font-size: 16px;
-	padding: 4px;
+	font-size: 100%;
+	padding: 8px;
 	border-radius: 4px;
 	box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
 	border: 1px solid #ddd;
@@ -71,9 +347,9 @@ input {
 }
 
 input.hopeful-answer {
-	margin: 0 20px 0 4px;
+	margin: 0 20px 0px 4px;
 	width: 25px;
-	font-size: 20px;
+	padding: 5px;
 }
 
 input.algebra-hopeful-answer {
@@ -86,8 +362,8 @@ input.algebra-hopeful-answer {
 
 a.btn {
 	border-radius: 4px;
-	font-size: 17px;
-	padding: 4px 8px;
+	font-size: 14px;
+	padding: 6px 12px;
 	background: #f90;
 	color: #fff;
 	text-decoration: none;
@@ -105,9 +381,13 @@ a.btn:active {
 	background: #fc0;
 }
 
-i {
+#content i {
 	color: #fff;
 	text-shadow: 0 0 1px rgba(0,0,0,.2);
+}
+
+#content ul {
+	font-size: 120%;
 }
 
 i.icon-remove {

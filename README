@@ -13,3 +13,13 @@ Features
 - For +, choose to do basic algebra (ie - 5 + _ = 10)
 - Green check when the question is right
 - Red X with the submitted answer above it when the question is wrong (this way, you can check how many times someone tried the question and what answer they submitted each time)
+
+
+Roadmap
+===============
+- Fixed number equations (10 + random #; 10 + random #; 10 + random #; ....)
+- Change radio button +, -, *, and / to checkboxes so you can randomly allow a mix of any checked
+- Store answers in array instead of outputting it as a class
+- Error states on incomplete form
+- Change from fontawesome to icomoon with only the needed icons
+- Spin checkmark icon when right answer
