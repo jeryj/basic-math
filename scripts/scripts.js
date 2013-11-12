@@ -4,7 +4,6 @@ jQuery(document).ready(function ($) {
   $('p.nice-job').hide();
 
   //Slide Form
-
   function equationsSlide () {
       $('#create-equations-slide').removeClass('pulsate');
       $('p.nice-job').hide();
@@ -22,8 +21,6 @@ jQuery(document).ready(function ($) {
     var howMany = $('input.howMany').val();
     var theOperator = $('input[name="operator"]:checked').val();
     var basicAlgebra = $('input[name="algebra"]:checked').val();
-
-    var randomClassNum = 1+ Math.floor(Math.random() * 10000);
 
     var operators = {
       '+': function(a, b) { return a + b },
@@ -73,7 +70,7 @@ jQuery(document).ready(function ($) {
     }
 
     // Create the UL list to append the questions to
-    $('#content').append('<h3>' + howMany + ' Questions with a High Number of ' + maxNumber + '</h3><ul class="max_' + randomClassNum + '"></ul>');
+    $('#content').append('<h3>' + howMany + ' Questions with a High Number of ' + maxNumber + '</h3><ul class="question-list"></ul>');
 
     // Check if it's Basic Algebra or a normal equation
     if (basicAlgebra == 'yes') {
@@ -85,12 +82,12 @@ jQuery(document).ready(function ($) {
         var answer = operators[theOperator](number1, number2);
         var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer algebra-hopeful-answer" />'
 
-        $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'" href="#">Check Answer</a><span class="checker"></span></li>');
+        $('#content ul').last().append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' ' + answer_box + ' = <span class="algebra-answer">' + answer + '</span><a id="check-answer_' + i + '" class="btn answer_'+ number2 +'">Check Answer</a><span class="checker"></span></li>');
         i++; // Increment i
       }
 
       //Slide to created equations
-      var sectionTop = ($('ul.max_' + randomClassNum).offset().top)-40;
+      var sectionTop = ($('#content ul').last().offset().top)-40;
       $('html, body').animate({
           scrollTop: sectionTop
         }, 1200);
@@ -106,60 +103,58 @@ jQuery(document).ready(function ($) {
           var answer = operators[theOperator](number1, number2);
           var answer_box= '<input type="text" pattern="\\d*" class="answer-box_' + i + ' hopeful-answer" />'
 
-          $('ul.max_' + randomClassNum).append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'" href="#">Check Answer</a><span class="checker"></span></li>');
+          $('#content ul').last().append('<li id="question_' + i + '"><span class="first-number">' + number1 + '</span> ' + theOperator + ' <span class="second-number">' + number2 + '</span> = ' + answer_box + '<a id="check-answer_' + i + '" class="btn answer_'+ answer +'">Check Answer</a><span class="checker"></span></li>');
           i++; // Increment i
 
         }
 
         //Slide to created equations
-        var sectionTop = ($('ul.max_' + randomClassNum).offset().top)-40;
+        var sectionTop = ($('#content ul').last().offset().top)-40;
         $('html, body').animate({
           scrollTop: sectionTop
         }, 1200);
 
       } // End create function
 
+  }
 
 
+  // Use .on instead of .click because elements were dymanically created so the click event wasn't bound to them yet
+  $(document).on('click', '#content a.btn', function() {
+    var suffix = $(this).attr('id').split('_').pop();
+    var theAnswer = $(this).attr('class').split('_').pop();
+    var submitted_answer = $(this).siblings('input.answer-box_' + suffix).val();
+    if ( submitted_answer == '') {
+        //If the answer is empty, send them back to the input
+        $(this).siblings('input.answer-box_' + suffix).focus();
+    } else {
+      if( submitted_answer == theAnswer ) {
+        //Show a Green Check if it's right
+        $(this).hide();
+        $(this).nextAll('.checker:first').prepend('<i class="icon-ok"><i>');
+        $(this).nextAll('.checker:first').children('.icon-ok:first').hide().fadeIn().delay('2000').addClass("rotate-whole");
 
-    // Check the answers
-    $('ul.max_' + randomClassNum + ' a.btn').click( function (e) {
-      e.preventDefault();
-      var suffix = $(this).attr('id').split('_').pop();
-      var answer = $(this).attr('class').split('_').pop();
-      var submitted_answer = $(this).siblings('input.answer-box_' + suffix).val();
-      if ( submitted_answer == '') {
-          //If the answer is empty, send them back to the input
-          $(this).siblings('input').focus();
-      } else {
-        if( submitted_answer == answer ) {
-          //Show a Green Check if it's right
-          $(this).hide();
-          $(this).siblings('.checker').prepend('<i class="icon-ok"><i>')
-          $(this).siblings(".checker").children('.icon-ok').hide().fadeIn().delay('2000').addClass("rotate-whole");
           // See if there are any more questions right
-          if ( $('#content .btn').is(":visible")) {
+          if ( $('#content a.btn').is(":visible")) {
 
           } else {
             $('#create-equations').removeClass('relative');
             $('p.nice-job').slideToggle();
             $('#create-equations-slide').addClass('pulsate');
           }
-        } else {
-          //Show a Red X with the submitted answer above it so we know what they entered
-          $(this).siblings('.checker').append('<span class="wrong"><i class="icon-remove"></i><span class="guess">' + submitted_answer + '<span></span>');
-          // Clear the Answer Submit Input and put focus on that input
-          $(this).siblings('input.answer-box_' + suffix).val('');
-          $(this).siblings('input').focus();
-        }
-      }
-    });
 
-  }
+      } else {
+        //Show a Red X with the submitted answer above it so we know what they entered
+        $(this).nextAll('.checker:first').append('<span class="wrong"><i class="icon-remove"></i><span class="guess">' + submitted_answer + '<span></span>');
+        // Clear the Answer Submit Input and put focus on that input
+        $(this).siblings('input.answer-box_' + suffix + ':first').val('');
+        $(this).siblings('input.answer-box_' + suffix + ':first').focus();
+      }
+    }
+  });
 
   //Create the forms!
-  $('a.btn.maxNumber-submit').click(function (e) {
-    e.preventDefault();
+  $(document).on('click', '.maxNumber-submit', function() {
     var maxNumber = $('input.maxNumber').val();
     var howMany = $('input.howMany').val();
     var operatorCheck = $('input[name="operator"]:checked').length == 0;
@@ -168,7 +163,6 @@ jQuery(document).ready(function ($) {
     } else {
       createEquations();
       equationsSlide();
-
       //Change create equations form to relative, because we don't really need to watch it scroll down the page.
       // Also, there's a bug on iOS that makes it jump around the page
       $('#create-equations').addClass('relative');
